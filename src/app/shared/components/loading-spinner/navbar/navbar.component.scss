@@ -1,0 +1,116 @@
+@import '../../../../shared/styles/index.scss';
+
+header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    // height: 140px;
+    display: flex;
+    justify-content: space-between;
+    padding-block: 2rem;
+    align-items: center;
+    background-color: white;
+    box-shadow: 1rem .5rem 1rem $main-color;
+    z-index: 9;
+}
+
+.nav-item {
+    &:first-child {
+        margin-inline-end: 1rem;
+    }
+    .nav-link {
+        padding: 1rem 1.5rem;
+        width: 100%;
+        height: 100%;
+        background-color: $main-color;
+        color: #fff;
+        border-radius: .5rem;
+        transition: .5s;
+        font-size: 1.6rem;
+        font-weight: 500;
+        &:hover {
+            background-color: $main-color-hover;
+        }
+    }
+}
+.logo{
+    display: flex;
+    align-items: center;
+    z-index: 110
+}
+.logo img
+{
+    // width: 50px;
+    // border-radius: 50%;
+    margin-right: 1rem;
+}
+
+.nav-list {
+    display: flex;
+    align-items: center;
+}
+
+.fa-customize-close,
+.fa-customize-bar {
+    display: none;
+}
+.fa-customize-close:hover,
+.fa-customize-bar:hover {
+    cursor: pointer;
+}
+
+@media screen and (max-width:768px) {
+    header{
+        height: toRem(48);
+        justify-content: space-between;
+        padding: 4rem 2rem;
+    }
+    .logo a{
+        font-size: toRem(28);
+    }
+    .logo img{
+        width: 3rem;
+    }
+    .fa-customize-bar,.fa-customize-close{
+        display: block;
+        color: #444444;
+        font-size: toRem(28);
+    }
+    .fa-customize-close
+    {
+        position: absolute;
+        right: 1.5rem;
+    }
+    .nav{
+        position: fixed;
+        top: 0;
+        right: -100%;
+        background-color: #fff;
+        width: 100%;
+        height: 100vh;
+        padding: toRem(24) 0px;
+        z-index: 100;
+        transition: 0.5s;
+    }
+    .nav-list{
+        display: flex;
+        flex-direction: column;
+        margin-top: 8rem;
+    }
+    .nav-item {
+        &:first-child {
+            margin-inline-end: 0;
+            margin-block-end: 1rem;
+        }
+    }
+    .show{
+        right: 0;
+    }
+
+}
+@media screen and (min-width:769px) and (max-width:1050px){
+    header{
+        padding: 4rem 2rem;
+    }
+}

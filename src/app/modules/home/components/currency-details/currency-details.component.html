@@ -1,0 +1,18 @@
+<div class="container-fluid">
+
+    <app-converter-panel *ngIf="isShown"
+    [title]="baseCurrency+' - Full Name'" 
+    [currencies]="currencies"
+    [rates]="rates"
+    [defaultFormData]="formData"
+    [showDetails]="false"/>
+
+
+    <div class="row" *ngIf="rates && isShown">
+        <app-historical-chart 
+        [rates]="rates" 
+        [currencies]="currencies"
+        [defaultFormData]="formData"/>
+    </div>
+
+</div>

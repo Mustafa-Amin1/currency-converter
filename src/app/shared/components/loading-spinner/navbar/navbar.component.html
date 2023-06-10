@@ -1,0 +1,27 @@
+<header class="container-fluid mb-5">
+    <div class="logo col-lg-2 col-3">
+        <!-- <img src="#" alt="logo"> -->
+        <a routerLink="/home" class="header-logo w-100">
+            <img src="../../../../../assets/images/logo/Banque_Misr.svg" alt="logo" class="img-fluid w-100" />
+        </a>
+    </div>
+    <i class="fas fa-bars fa-customize-bar" id="toggle-menu" (click)="showMenu()"></i>
+    <nav class="nav d-inline" id="nav-menu">
+        <i class="fas fa-close fa-customize-close" (click)="closingMenu()" id="close-menu"></i>
+        <ul class="nav-list">
+            <li class="nav-item">
+                <a [routerLink]="'/home/currency-details'" 
+                [queryParams]="{ from: 'EUR', to:'USD' }" 
+                class="nav-link">
+                EUR-USD Details
+            </a>
+        </li>
+            <li class="nav-item">
+                <a [routerLink]="'/home/currency-details'" 
+                [queryParams]="{ from: 'EUR', to:'AUD' }" 
+                 class="nav-link">EUR-AUD Details</a>
+            </li>
+            <!-- <li class="nav-items last-nav-item "><a routerLink="/auth/sign-up" class="nav-link get-start-btn">Get Started</a></li> -->
+        </ul>
+    </nav>
+</header>

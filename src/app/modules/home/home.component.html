@@ -1,0 +1,23 @@
+<div class="container-fluid pb-5">
+
+    <app-converter-panel 
+    title="Currency Exchanger" 
+    [currencies]="currencies"
+    [rates]="rates"
+    [showDetails]="true"
+    (emitFormData)="convertedData($event)"/>
+
+    <div class="row mt-5" *ngIf="reRender">
+        <ng-container *ngFor="let currency of currencies" >
+            <div class="col-md-4 card-wrapper" *ngIf="currency != baseCurrency">
+                <app-converted-card  class="w-100"  
+                [convertedCurrency]="currency"
+                [rates]="rates"
+                [base]="baseCurrency"
+                [target]="currency"
+                [amount]="convertedAmount"/>
+            </div>
+         </ng-container>
+
+    </div>
+</div>

@@ -1,1 +1,89 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$currency-exchanger-primary: mat.define-palette(mat.$indigo-palette);
+$currency-exchanger-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$currency-exchanger-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$currency-exchanger-theme: mat.define-light-theme((
+  color: (
+    primary: $currency-exchanger-primary,
+    accent: $currency-exchanger-accent,
+    warn: $currency-exchanger-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($currency-exchanger-theme);
+
 /* You can add global styles to this file, and also import other style files */
+
+@import "../node_modules/@fortawesome/fontawesome-free/css/all.min.css";
+
+
+//style
+@import  "app/shared/styles/index.scss" ;
+
+@font-face {
+    font-family: 'circular-book';
+    src: url(./assets/fonts/Circular-Std-Book.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'circular-bold';
+    src: url(./assets/fonts/Circular-std-Bold.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Helvetica';
+    src: url(./assets/fonts/Helvetica.ttf) format('truetype');
+}
+
+:root {
+    font-size: 10px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+}
+
+body {
+    font-family: 'circular-book', sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: "Roboto", "Helvetica Neue", sans-serif; }
+
+
+.mat-mdc-form-field-subscript-wrapper {
+    display: none !important;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

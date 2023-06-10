@@ -1,0 +1,78 @@
+<div class="converter-box">
+    <div class="row justify-content-between align-items-center mb-5">
+        <h2 *ngIf="title" class="col-md-3 col-12 p-0">{{title}}</h2>
+        <a *ngIf="!showDetails" role="button"
+            class="d-flex align-items-center justify-content-center btn btn-primary col-md-2 col-12 btn btn-primary mt-3 mt-md-0"
+            routerLink="/home">
+            Back To Home</a>
+    </div>
+    <form [formGroup]="currencyConverterForm" (ngSubmit)="submitConverterForm()"
+        class="row justify-content-between align-items-center">
+
+        <div class="row justify-content-between align-items-start">
+            <div class="col-md-4">
+                <div class="d-flex flex-column justify-content-between h-100">
+                    <div class="form-group">
+                        <label for="Amount" class="form-label">Amount</label>
+                        <input type="text" class="form-control" id="Amount" placeholder="Write Amount"
+                            formControlName="amount" numbersOnly>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-6">
+                <div class="row justify-content-between align-items-center">
+                    <div class="col-md-5">
+                        <label for="From" class="form-label">From</label>
+                        <select id="From" class="form-select" aria-label="From" formControlName="currencyFrom">
+                            <option [value]="null">Choose currency</option>
+                            <option *ngFor="let currency of currencies" [value]="currency" [selected]="currency=='EUR'"
+                                [attr.disabled]="currencyConverterForm.controls['currencyTo'].value == currency ? 'disabled' : null">
+                                {{currency}}</option>
+                        </select>
+
+                    </div>
+                    <button [disabled]="!showDetails" (click)="selectedCurrenciesChange()"
+                        class="rotate-90 exchange-btn btn align-self-end" alt=""><i
+                            class="fa-solid fa-right-left"></i></button>
+
+                    <div class="col-md-5">
+                        <label for="To" class="form-label">To</label>
+                        <select class="form-select" formControlName="currencyTo">
+                            <option [value]="null">Choose currency</option>
+                            <option *ngFor="let currency of currencies" [value]="currency"
+                                [attr.disabled]="currencyConverterForm.controls['currencyFrom'].value == currency ? 'disabled' : null">
+                                {{currency}}</option>
+                        </select>
+                    </div>
+                    <div class="col-12 mt-5">
+                        <button type="submit" class="btn btn-primary w-100 " [disabled]="currencyConverterForm.invalid"
+                            [ngClass]="{'disabled':currencyConverterForm.invalid}">Convert</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row align-items-center" [ngClass]="{'justify-content-end': !formSubmitted,
+        'justify-content-between': formSubmitted}">
+            <div class="col-md-4" *ngIf="formSubmitted">
+                <div class="info mt-5 d-flex align-items-center justify-content-center">
+                    {{selectedRate? selectedRate : 'select Currency'}}
+                </div>
+            </div>
+            <div class="col-md-6 mt-5">
+                <div class="row justify-content-between align-items-center">
+                    <div class=" col-md-8 col-12 result mt-auto d-flex align-items-center justify-content-center"
+                        [ngClass]="{
+                        'w-100': !showDetails}">
+                        {{result? result:'confirm your choice to get result'}}
+                    </div>
+                    <a *ngIf="showDetails" role="button"
+                        class="d-flex align-items-center justify-content-center  btn btn-primary col-md-3 col-12 btn btn-primary mt-3 mt-md-0"
+                        (click)="routeToDetails(currencyConverterForm.value.currencyFrom,currencyConverterForm.value.currencyTo)">
+                        More Details</a>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

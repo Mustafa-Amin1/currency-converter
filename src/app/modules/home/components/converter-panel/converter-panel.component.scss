@@ -1,0 +1,47 @@
+
+@import '../../../../shared/styles/index.scss';
+
+.exchange-btn {
+    flex: 0 0 auto;
+    width: auto;
+    font-size: toRem(24);
+}
+.btn:disabled {
+    border: none;
+}
+
+.btn-primary  {
+    min-height: toRem(40);
+    font-size:  toRem(18);
+    font-weight: 500;
+}
+
+form {
+
+
+    select,
+    input {
+        height: toRem(40);
+        font-size: toRem(16);
+    }
+
+    .result {
+        height: toRem(60);
+    }
+    .result,
+    .info {
+        padding: toRem(10) toRem(20);
+        text-align: center;
+        border: toRem(1) solid $main-color;
+        border-radius: toRem(4);
+    }
+}
+
+
+
+
+@media (max-width:768px) {
+    .rotate-90 {
+        rotate: 90deg;
+    }
+}

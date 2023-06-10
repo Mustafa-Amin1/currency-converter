@@ -1,0 +1,18 @@
+@import '../../../../shared/styles/index.scss';
+
+#divChart{
+    display: block;
+    width: 80%;
+    height: auto;
+    // overflow-x: scroll;
+    margin-inline: auto;
+
+
+}
+
+#myChart {
+    width: 100% !important;
+    margin: toRem(60) auto;
+    overflow-x: scroll;
+
+}
